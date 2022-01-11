@@ -3,16 +3,16 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["AntiStickerBo.csproj", "./"]
-RUN dotnet restore "AntiStickerBo.csproj"
+COPY ["AntiStickerBot.csproj", "./"]
+RUN dotnet restore "AntiStickerBot.csproj"
 COPY . .
 WORKDIR "/src/"
-RUN dotnet build "AntiStickerBo.csproj" -c Release -o /app/build
+RUN dotnet build "AntiStickerBot.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "AntiStickerBo.csproj" -c Release -o /app/publish
+RUN dotnet publish "AntiStickerBot.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "AntiStickerBo.dll"]
+ENTRYPOINT ["dotnet", "AntiStickerBot.dll"]
