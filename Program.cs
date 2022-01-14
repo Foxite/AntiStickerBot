@@ -4,7 +4,7 @@ var discord = new DiscordClient(new DiscordConfiguration() {
 	Token = Environment.GetEnvironmentVariable("BOT_TOKEN")
 });
 
-string? envVarIgnoredChannels = Environment.GetEnvironmentVariable("BOT_TOKEN");
+string? envVarIgnoredChannels = Environment.GetEnvironmentVariable("IGNORED_CHANNELS");
 ulong[] ignoredChannels = envVarIgnoredChannels == null ? Array.Empty<ulong>() : envVarIgnoredChannels.Split(";").Select(ulong.Parse).ToArray();
 
 discord.MessageCreated += async (_, eventArgs) => {
