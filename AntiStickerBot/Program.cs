@@ -22,24 +22,31 @@ var emoteRegex = new Regex(@"(<a?)?:\w+:(\d{18}>)?");
 string? maxEmotesEnvvar = Environment.GetEnvironmentVariable("MAX_EMOTES");
 int maxEmotes = maxEmotesEnvvar == null ? -1 : int.Parse(maxEmotesEnvvar);
 
+string? envVarEmoteIgnoredRoles = Environment.GetEnvironmentVariable("EMOTE_IGNORED_ROLES");
+ulong[] emoteIgnoredRoles = envVarEmoteIgnoredRoles == null ? Array.Empty<ulong>() : envVarEmoteIgnoredRoles.Split(";").Select(ulong.Parse).ToArray();
+
 discord.MessageCreated += (_, eventArgs) => {
-	if (ignoredChannels.Contains(eventArgs.Channel.Id)) {
+	if (eventArgs.Author is not DiscordMember author || ignoredChannels.Contains(eventArgs.Channel.Id)) {
 		return Task.CompletedTask;
 	}
 	
 	if (eventArgs.Message.Stickers.Count > 0) {
 		return eventArgs.Message.DeleteAsync();
-	} else if (maxEmotes != -1) {
+	} else if (maxEmotes != -1 && !author.Roles.Select(role => role.Id).Intersect(emoteIgnoredRoles).Any()) {
 		ReadOnlySpan<char> span = eventArgs.Message.Content.AsSpan();
 		int count = emoteRegex.Matches(eventArgs.Message.Content).Count;
+		if (count > maxEmotes) {
+			return eventArgs.Message.DeleteAsync();
+		}
 		for (int i = 0; i < eventArgs.Message.Content.Length;) {
-			if (count > maxEmotes) {
-				return eventArgs.Message.DeleteAsync();
-			}
 			int length = emojiTree.ContainsPrefix(span.Slice(i));
 			if (length != -1) {
 				i += length;
 				count++;
+				
+				if (count > maxEmotes) {
+					return eventArgs.Message.DeleteAsync();
+				}
 			} else {
 				i++;
 			}

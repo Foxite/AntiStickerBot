@@ -6,7 +6,6 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-        <RootNamespace>AntiStickerBo</RootNamespace>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -14,7 +13,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="DSharpPlus" Version="4.2.0-nightly-01059" />
+        <PackageReference Include="DSharpPlus" Version="4.2.0-nightly-01107" />
     </ItemGroup>
 
 </Project>
