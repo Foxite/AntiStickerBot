@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntiStickerBot", "AntiStickerBot.csproj", "{3420FA1B-0367-4B2F-AD88-4B16ACE80596}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntiStickerBot", "AntiStickerBot\AntiStickerBot.csproj", "{3420FA1B-0367-4B2F-AD88-4B16ACE80596}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{671D7D65-5D29-4F60-80E3-2BF460214824}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +14,9 @@ Global
 		{3420FA1B-0367-4B2F-AD88-4B16ACE80596}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3420FA1B-0367-4B2F-AD88-4B16ACE80596}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3420FA1B-0367-4B2F-AD88-4B16ACE80596}.Release|Any CPU.Build.0 = Release|Any CPU
+		{671D7D65-5D29-4F60-80E3-2BF460214824}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{671D7D65-5D29-4F60-80E3-2BF460214824}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{671D7D65-5D29-4F60-80E3-2BF460214824}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{671D7D65-5D29-4F60-80E3-2BF460214824}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
