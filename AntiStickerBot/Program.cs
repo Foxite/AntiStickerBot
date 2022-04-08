@@ -25,6 +25,9 @@ int maxEmotes = maxEmotesEnvvar == null ? -1 : int.Parse(maxEmotesEnvvar);
 string? envVarEmoteIgnoredRoles = Environment.GetEnvironmentVariable("EMOTE_IGNORED_ROLES");
 ulong[] emoteIgnoredRoles = envVarEmoteIgnoredRoles == null ? Array.Empty<ulong>() : envVarEmoteIgnoredRoles.Split(";").Select(ulong.Parse).ToArray();
 
+string? envVarEmoteIgnoredChannels = Environment.GetEnvironmentVariable("EMOTE_IGNORED_CHANNELS");
+ulong[] emoteIgnoredChannels = envVarEmoteIgnoredChannels == null ? Array.Empty<ulong>() : envVarEmoteIgnoredChannels.Split(";").Select(ulong.Parse).ToArray();
+
 discord.MessageCreated += (_, eventArgs) => {
 	if (eventArgs.Author is not DiscordMember author || ignoredChannels.Contains(eventArgs.Channel.Id)) {
 		return Task.CompletedTask;
@@ -32,7 +35,7 @@ discord.MessageCreated += (_, eventArgs) => {
 	
 	if (eventArgs.Message.Stickers.Count > 0) {
 		return eventArgs.Message.DeleteAsync();
-	} else if (maxEmotes != -1 && !author.Roles.Select(role => role.Id).Intersect(emoteIgnoredRoles).Any()) {
+	} else if (maxEmotes != -1 && !author.Roles.Select(role => role.Id).Intersect(emoteIgnoredRoles).Any() && !emoteIgnoredChannels.Contains(eventArgs.Channel.Id)) {
 		ReadOnlySpan<char> span = eventArgs.Message.Content.AsSpan();
 		int count = emoteRegex.Matches(eventArgs.Message.Content).Count;
 		if (count > maxEmotes) {
