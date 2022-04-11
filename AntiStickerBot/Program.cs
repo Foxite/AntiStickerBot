@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using AntiStickerBot;
 using DSharpPlus;
 using DSharpPlus.Entities;
-using Foxite.Common.Collections;
 
 [return: NotNullIfNotNull("defaultValue")]
 T ParseEnvvarOrDefault<T>(string name, T defaultValue, Func<string, T> parse) {

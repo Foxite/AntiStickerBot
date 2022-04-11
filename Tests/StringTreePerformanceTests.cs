@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using AntiStickerBot;
 using DSharpPlus.Entities;
-using Foxite.Common.Collections;
 using NUnit.Framework;
 
 namespace Tests; 

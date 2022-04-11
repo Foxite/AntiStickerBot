@@ -1,4 +1,4 @@
-using Foxite.Common.Collections;
+using AntiStickerBot;
 using NUnit.Framework;
 
 namespace Tests;
