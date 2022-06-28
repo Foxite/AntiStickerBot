@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using AntiStickerBot;
 using DSharpPlus;
 using DSharpPlus.Entities;
+using DSharpPlus.EventArgs;
 
 [return: NotNullIfNotNull("defaultValue")]
 T ParseEnvvarOrDefault<T>(string name, T defaultValue, Func<string, T> parse) {
@@ -51,25 +52,25 @@ if (maxEmotes > 0) {
 		emojiTree.Add(emoji);
 	}
 
-	discord.MessageCreated += (_, ea) => {
-		if (IsIgnored(ea.Author, ea.Channel, true)) {
+	Task FilterEmojis(DiscordMessage message) {
+		if (IsIgnored(message.Author, message.Channel, true)) {
 			return Task.CompletedTask;
 		}
 
-		ReadOnlySpan<char> span = ea.Message.Content.AsSpan();
-		int count = emoteRegex.Matches(ea.Message.Content).Count;
+		ReadOnlySpan<char> span = message.Content.AsSpan();
+		int count = emoteRegex.Matches(message.Content).Count;
 		if (count > maxEmotes) {
-			return ea.Message.DeleteAsync();
+			return message.DeleteAsync();
 		}
 
-		for (int i = 0; i < ea.Message.Content.Length;) {
+		for (int i = 0; i < message.Content.Length;) {
 			int length = emojiTree.ContainsPrefix(span[i..]);
 			if (length != -1) {
 				i += length;
 				count++;
 
 				if (count > maxEmotes) {
-					return ea.Message.DeleteAsync();
+					return message.DeleteAsync();
 				}
 			} else {
 				i++;
@@ -77,7 +78,10 @@ if (maxEmotes > 0) {
 		}
 
 		return Task.CompletedTask;
-	};
+	}
+
+	discord.MessageCreated += (_, ea) => FilterEmojis(ea.Message);
+	discord.MessageUpdated += (_, ea) => FilterEmojis(ea.Message);
 }
 
 await discord.ConnectAsync();
