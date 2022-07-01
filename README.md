@@ -1,14 +1,16 @@
-## AntiStickerBot
-Deletes all stickers, and also messages with more than a certain amount of emotes.
+# Anti(Sticker|Emote)Bot
+AntiStickerBot deletes all messages with stickers, AntiEmoteBot deletes all messages that have too many emotes.
 
-### Deployment
-Use of the Dockerfile is recommended.
-The envvars:
+To ignore a channel simply deny the bot read access to that channel.
+
+## Docker deployment
+Use these envvars:
+
+### AntiStickerBot
 - BOT_TOKEN
-- DELETE_STICKERS: boolean
-- MAX_EMOTES: integer, messages with more than this amount of emotes/emojis are deleted.
-- STICKER_IGNORED_ROLES: list of role IDs (separated by semicolon) that are allowed to post stickers in all channels
-- STICKER_IGNORED_CHANNELS: list of channel IDs (separated by semicolon) where everyone is allowed to post stickers
-- EMOTE_IGNORED_ROLES: list of role IDs (separated by semicolon) that are allowed to exceed the emote limit
-- EMOTE_IGNORED_CHANNELS: list of channel IDs (separated by semicolon) where everyone is allowed to exceed the emote limit
-If you want to make a channel where everyone is allowed to both exceed the emote limit and post stickers, consider just denying the bot access to that channel.
+- STICKER_IGNORED_ROLES: semicolon separated list of role IDs that will be ignored
+
+### AntiEmoteBot
+- BOT_TOKEN
+- EMOTE_IGNORED_ROLES: semicolon separated list of role IDs that will be ignored
+- MAX_EMOTES: the maximum amount of emotes in a single message that will be allowed
