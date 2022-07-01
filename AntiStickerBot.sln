@@ -4,11 +4,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntiStickerBot", "AntiStick
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{671D7D65-5D29-4F60-80E3-2BF460214824}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{C6508F08-E05C-4775-93C6-C86802EE8FBA}"
-	ProjectSection(SolutionItems) = preProject
-		Dockerfile = Dockerfile
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntiEmoteBot", "AntiEmoteBot\AntiEmoteBot.csproj", "{A61FD972-FB8F-48DE-AD62-61B29A429890}"
 EndProject
 Global

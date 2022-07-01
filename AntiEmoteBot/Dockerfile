@@ -3,10 +3,10 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["AntiEmoteBot/AntiEmoteBot.csproj", "AntiEmoteBot/"]
-RUN dotnet restore "AntiEmoteBot/AntiEmoteBot.csproj"
+COPY ["AntiEmoteBot.csproj", "./"]
+RUN dotnet restore "AntiEmoteBot.csproj"
 COPY . .
-WORKDIR "/src/AntiEmoteBot"
+WORKDIR "/src/"
 RUN dotnet build "AntiEmoteBot.csproj" -c Release -o /app/build
 
 FROM build AS publish
