@@ -20,6 +20,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\AntiStickerBot\AntiStickerBot.csproj" />
+      <ProjectReference Include="..\AntiEmoteBot\AntiEmoteBot.csproj" />
     </ItemGroup>
 
 </Project>

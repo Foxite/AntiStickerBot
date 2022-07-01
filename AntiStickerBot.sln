@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{C6508F
 		Dockerfile = Dockerfile
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntiEmoteBot", "AntiEmoteBot\AntiEmoteBot.csproj", "{A61FD972-FB8F-48DE-AD62-61B29A429890}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,5 +25,9 @@ Global
 		{671D7D65-5D29-4F60-80E3-2BF460214824}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{671D7D65-5D29-4F60-80E3-2BF460214824}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{671D7D65-5D29-4F60-80E3-2BF460214824}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A61FD972-FB8F-48DE-AD62-61B29A429890}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A61FD972-FB8F-48DE-AD62-61B29A429890}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A61FD972-FB8F-48DE-AD62-61B29A429890}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A61FD972-FB8F-48DE-AD62-61B29A429890}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
