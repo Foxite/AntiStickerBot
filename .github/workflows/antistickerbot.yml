@@ -1,9 +1,13 @@
-name: Docker Image CI
+name: Build AntiStickerBot
 
 on:
   push:
     branches: [ master ]
+    paths:
+      - 'AntiStickerBot/**'
   pull_request:
+    paths:
+      - 'AntiStickerBot/**'
 
 jobs:
   build:
