@@ -9,3 +9,7 @@ updates:
     directory: "/AntiStickerBot" # Location of package manifests
     schedule:
       interval: "daily"
+  - package-ecosystem: "nuget"
+    directory: "/AntiEmoteBot"
+    schedule:
+      interval: "daily"
