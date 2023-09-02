@@ -5,6 +5,7 @@ on:
     branches: [ master ]
     paths:
       - 'AntiEmoteBot/**'
+
   pull_request:
     paths:
       - 'AntiEmoteBot/**'
